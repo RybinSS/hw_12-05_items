@@ -28,3 +28,5 @@ cross join customer c ON r.customer_id = c.customer_id
 cross join inventory i ON r.customer_id = c.customer_id   
 WHERE p.payment_date >= '2005-07-30' AND p.payment_date < '2005-07-31'  
 GROUP BY c.customer_id;  
+
+<img src = "img/ind.png" width = 100%>  
