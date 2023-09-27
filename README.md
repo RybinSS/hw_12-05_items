@@ -30,3 +30,8 @@ explain analyze
 select distinct concat(c.last_name, ' ', c.first_name), sum(p.amount) over (partition by c.customer_id)  
 from payment p, customer c   
 where date(p.payment_date) = '2005-07-30' and p.customer_id = c.customer_id;  
+
+explain analyze
+select distinct concat(c.last_name, ' ', c.first_name), sum(p.amount) over (GROUP by c.customer_id)
+from payment p cross join rental r cross join customer c cross join inventory i
+where payment_date >= '2005-07-30' AND payment_date < DATE_ADD('2005-07-30', INTERVAL 1 DAY);
